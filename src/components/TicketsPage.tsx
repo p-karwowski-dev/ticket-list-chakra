@@ -1,13 +1,14 @@
-import { memo } from "react";
-import { Text } from "@chakra-ui/react";
-import { Ticket } from "../core/types";
+import { memo } from "react"
+import TicketCard from "./ui/ticketCard"
+import { Ticket } from "../core/types"
+import { Stack } from "@chakra-ui/react"
 
 const TicketsPage = memo(({ tickets }: { tickets: Ticket[] }) => {
   return (
-    <Text whiteSpace="pre-wrap" fontFamily="monospace" p={8}>
-      {JSON.stringify(tickets, null, 2)}
-    </Text>
-  );
-});
+    <Stack direction="column" gap={4} p={4} flex="1">
+      <TicketCard />
+    </Stack>
+  )
+})
 
-export default TicketsPage;
+export default TicketsPage
