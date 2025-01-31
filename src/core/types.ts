@@ -17,4 +17,22 @@ export type Ticket = {
   dueDate?: string // ISO 8601 (YYYY-MM-DD)
 }
 
-export type FilterClick = () => void
+export type Filters<T> = {
+  [K in keyof T]?: T[K][]
+}
+
+export type ToggleFilter = ({
+  key,
+  value,
+}: {
+  key: keyof Ticket
+  value: Ticket[keyof Ticket]
+}) => void
+
+export type IsFilterActive = ({
+  key,
+  value,
+}: {
+  key: keyof Ticket
+  value: Ticket[keyof Ticket]
+}) => boolean
