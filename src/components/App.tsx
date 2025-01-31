@@ -1,12 +1,13 @@
-import NavBar from "./NavBar";
-import TicketsPage from "./TicketsPage";
-import { useState } from "react";
-import PageLayout from "./PageLayout";
-import { TICKETS } from "../core/data";
-import { Provider } from "./ui/provider";
+import NavBar from './NavBar'
+import TicketsPage from './TicketsPage'
+import { useState } from 'react'
+import PageLayout from './PageLayout'
+import { TICKETS } from '../core/data'
+import { Provider } from './ui/provider'
+import SidePanel from './SidePanel'
 
 function App() {
-  const [tickets] = useState(() => TICKETS);
+  const [tickets] = useState(() => TICKETS)
 
   return (
     <>
@@ -17,11 +18,12 @@ function App() {
       >
         <NavBar />
         <PageLayout>
+          <SidePanel />
           <TicketsPage tickets={tickets} />
         </PageLayout>
       </Provider>
     </>
-  );
+  )
 }
 
-export default App;
+export default App
