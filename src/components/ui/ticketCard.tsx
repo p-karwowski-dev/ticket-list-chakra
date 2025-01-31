@@ -53,9 +53,9 @@ const TicketCard = memo(({ t }: { t: Ticket }) => {
             >
               <Avatar
                 ids={{ root: avatarId }}
-                name="Sage"
+                name={t.assignee?.name}
                 colorPalette="blue"
-                src="t.assignee.avatarUrl"
+                src={t.assignee?.avatarUrl}
                 size="xs"
                 flex="0 0 auto"
                 mr={4}
