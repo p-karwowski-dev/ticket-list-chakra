@@ -1,7 +1,13 @@
 import { Stack } from "@chakra-ui/react"
 import FilterSection from "./ui/filterSection"
+import { IsFilterActive, ToggleFilter } from "../core/types"
 
-const SidePanel = () => {
+interface SidePanelProps {
+  toggleFilter: ToggleFilter
+  isFilterActive: IsFilterActive
+}
+
+const SidePanel = ({ toggleFilter, isFilterActive }: SidePanelProps) => {
   return (
     <Stack
       top="0"
@@ -18,9 +24,17 @@ const SidePanel = () => {
       p={4}
     >
       <FilterSection
+        toggleFilter={toggleFilter}
+        isFilterActive={isFilterActive}
         name="Priority"
-        list={["High", "Medium", "Small"]}
-        onClick={console.log}
+        list={["High", "Medium", "Low"]}
+      />
+
+      <FilterSection
+        toggleFilter={toggleFilter}
+        isFilterActive={isFilterActive}
+        name="Status"
+        list={["Backlog", "Triage", "In-progress", "Done"]}
       />
     </Stack>
   )
