@@ -2,26 +2,11 @@ import { Box, Card, Grid, GridItem, Heading } from "@chakra-ui/react"
 import { Tooltip } from "./tooltip"
 import { memo, useState, useId } from "react"
 import PriorityRating from "./priorityRating"
-import { Priority } from "../../core/types"
+import { Priority, Ticket } from "../../core/types"
 import { Avatar } from "./avatar"
 
-const t = {
-  id: 0,
-  title: "Fix login page validation errors",
-  description:
-    "The login form does not display errors for invalid credentials.",
-  priority: "medium" as Priority,
-  status: "in-progress",
-  dueDate: "2025-01-25",
-  assignee: {
-    id: 0,
-    name: "Alex Johnson",
-    avatarUrl: "https://i.pravatar.cc/150?img=1",
-  },
-}
-
-const TicketCard = memo(() => {
-  const [isHidden, toggleHidden] = useState(true)
+const TicketCard = memo(({ t }: { t: Ticket }) => {
+  const [isHidden, toggleHidden] = useState(false)
   const avatarId = useId()
 
   return (
@@ -50,7 +35,7 @@ const TicketCard = memo(() => {
 
           <GridItem colSpan={2} justifySelf="end">
             <Heading size="sm">
-              <PriorityRating priority={t.priority} />
+              <PriorityRating priority={t.priority as Priority} />
             </Heading>
           </GridItem>
 
@@ -62,7 +47,7 @@ const TicketCard = memo(() => {
 
           <GridItem colSpan={1} justifySelf="end">
             <Tooltip
-              content={t.assignee.name}
+              content={t?.assignee?.name}
               showArrow
               ids={{ trigger: avatarId }}
             >
