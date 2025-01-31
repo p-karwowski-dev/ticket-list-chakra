@@ -1,4 +1,5 @@
-import { Stack } from '@chakra-ui/react'
+import { Stack } from "@chakra-ui/react"
+import FilterSection from "./ui/filterSection"
 
 const SidePanel = () => {
   return (
@@ -15,7 +16,13 @@ const SidePanel = () => {
       borderRight="1px solid"
       borderColor="gray.700"
       p={4}
-    />
+    >
+      <FilterSection
+        name="Priority"
+        list={["High", "Medium", "Small"]}
+        onClick={console.log}
+      />
+    </Stack>
   )
 }
 
